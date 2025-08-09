@@ -74,15 +74,11 @@ export default function SiteHeader() {
             >
               Contact
             </Link>
-            <Button asChild className="bg-emerald-600 hover:bg-emerald-700">
-              <Link
-                href="https://play.google.com/store/apps/details?id=app.raidin"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Télécharger l&apos;app
-              </Link>
-            </Button>
+            <Button asChild className="bg-blue-400 hover:bg-blue-700">
+            <Link href="/depannage" target="_blank" rel="noopener noreferrer">
+              Rejoine-nous comme un dépannage
+            </Link>
+          </Button>
           </div>
         </div>
       )}
