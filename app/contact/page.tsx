@@ -24,8 +24,10 @@ export default function ContactPage() {
               <p>
                 Email:{" "}
                 <a className="underline" href="mailto:support@raidin.app">
-                  contact@digitservz.dz
+                  raidin@digitservz.dz
                 </a>
+              </p>
+              <p>Téléphone :{" "} 0784065560
               </p>
               <p>Support disponible du 7/7, 9h–23h (heure locale).</p>
             </CardContent>
