@@ -14,11 +14,11 @@ import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 
 export const metadata = {
-  title: "Raidin — Application de VTC sur Android",
+  title: "Raidin — Application de Dépannage sur Android",
   description:
-    "Raidin, votre application de VTC sur Android. Réservez un chauffeur en quelques minutes, suivez votre trajet en temps réel, paiements sécurisés.",
+    "Raidin, votre application de Dépannage sur Android. Réservez un chauffeur en quelques minutes, suivez votre trajet en temps réel, paiements sécurisés.",
   openGraph: {
-    title: "Raidin — Application de VTC sur Android",
+    title: "Raidin — Application de Dépannage sur Android",
     description:
       "Réservez un chauffeur en quelques minutes. Suivi en temps réel, chauffeurs vérifiés, paiements sécurisés.",
     images: ["/raidin-android-app-preview.png"],
@@ -72,7 +72,7 @@ export default function HomePage() {
             <div className="relative">
               <div className="relative mx-auto max-w-[380px]">
                 <Image
-                  src="/smartphone-ride-hailing-mockup.png"
+                  src="/photo.jpg"
                   width={380}
                   height={760}
                   alt="Aperçu de l'application Raidin sur smartphone"
