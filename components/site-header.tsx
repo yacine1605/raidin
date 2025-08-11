@@ -39,7 +39,7 @@ export default function SiteHeader() {
         <div className="hidden md:block">
           <Button asChild className="bg-blue-400 hover:bg-blue-700">
             <Link href="/depannage" target="_blank" rel="noopener noreferrer">
-              Rejoine-nous comme un dépannage
+              Rejoint-nous comme un dépannage
             </Link>
           </Button>
         </div>
