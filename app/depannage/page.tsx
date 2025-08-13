@@ -1,3 +1,4 @@
+"use client";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import ContactForm from "@/components/contact-form";
@@ -17,13 +18,63 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 
-export const metadata = {
-  title: "Contact — Raidin",
-  description:
-    "Contactez l’équipe Raidin pour toute question, assistance ou partenariat.",
-};
+//export const metadata = {
+//  title: "Contact — Raidin",
+//  description:
+//    "Contactez l’équipe Raidin pour toute question, assistance ou partenariat.",
+//};
 import logo from "../../public/rpro.png";
+import { useState } from "react";
 export default function ContactPage() {
+  const [downloadStatus, setDownloadStatus] = useState({});
+
+  const handleDownload = async (apk, displayName) => {
+    try {
+      // Set loading state
+      setDownloadStatus((prev) => ({ ...prev, [apk.id]: "loading" }));
+
+      // Get download URL from secure API
+      const response = await fetch(`/api/get-download-url/${apk.id}`, {
+        method: "POST",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to get download URL");
+      }
+
+      const { downloadUrl } = await response.json();
+
+      // Create a temporary anchor element to trigger download
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = `${displayName}.apk`;
+      link.target = "_blank";
+      link.style.display = "none";
+
+      // Add to DOM, click, then remove
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Set success state
+      setDownloadStatus((prev) => ({ ...prev, [apk.id]: "success" }));
+
+      // Reset status after 3 seconds
+      setTimeout(() => {
+        setDownloadStatus((prev) => ({ ...prev, [apk.id]: null }));
+      }, 3000);
+    } catch (error) {
+      console.error("Download error:", error);
+      setDownloadStatus((prev) => ({ ...prev, [apk.id]: "error" }));
+
+      // Reset error status after 3 seconds
+      setTimeout(() => {
+        setDownloadStatus((prev) => ({ ...prev, [apk.id]: null }));
+      }, 3000);
+
+      alert(`Download failed: ${error.message}`);
+    }
+  };
   return (
     <div className="flex min-h-[100svh] flex-col   ">
       <SiteHeader />
@@ -51,14 +102,14 @@ export default function ContactPage() {
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button
-                  asChild
                   size="lg"
                   className="bg-blue-500 hover:bg-blue-600"
+                  onClick={() =>
+                    handleDownload({ id: "Raidin-Pro" }, "Raidin-Pro")
+                  }
                 >
-                  <Link href="" target="_blank" rel="noopener noreferrer">
-                    <Download className="mr-2 h-5 w-5" />
-                    Télécharger
-                  </Link>
+                  <Download className="mr-2 h-5 w-5" />
+                  Télécharger RaidinPro V1.0.0
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <a href="#comment-ca-marche">Voir comment ça marche</a>
@@ -253,18 +304,14 @@ export default function ContactPage() {
             </div>
             <div className="flex flex-wrap items-center gap-3 md:justify-end">
               <Button
-                asChild
                 size="lg"
                 className="bg-white text-emerald-700 hover:bg-white/90"
+                onClick={() =>
+                  handleDownload({ id: "Raidin-Pro" }, "Raidin-Pro")
+                }
               >
-                <Link
-                  href="https://play.google.com/store/apps/details?id=app.raidin"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  Télécharger
-                </Link>
+                <Download className="mr-2 h-5 w-5" />
+                Télécharger
               </Button>
               <Button asChild size="lg" variant="secondary">
                 <Link href="/contact">Nous contacter</Link>
