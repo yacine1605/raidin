@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -12,20 +13,88 @@ import {
 } from "lucide-react";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
+import { useState } from "react";
 
-export const metadata = {
-  title: "Raidin — Application de Dépannage sur Android",
-  description:
-    "Raidin, votre application de Dépannage sur Android. Réservez un chauffeur en quelques minutes, suivez votre trajet en temps réel, paiements sécurisés.",
-  openGraph: {
-    title: "Raidin — Application de Dépannage sur Android",
-    description:
-      "Réservez un chauffeur en quelques minutes. Suivi en temps réel, chauffeurs vérifiés, paiements sécurisés.",
-    images: ["/raidin-android-app-preview.png"],
-  },
-};
-
+//export const metadata = {
+//  title: "Raidin — Application de Depannage sur Android",
+//  description:
+//    "Raidin, votre application de VTC sur Android. Réservez un chauffeur en quelques minutes, suivez votre trajet en temps réel, paiements sécurisés.",
+//  openGraph: {
+//    title: "Raidin — Application de VTC sur Android",
+//    description:
+//      "Réservez un Depannage en quelques minutes. Suivi en temps réel, chauffeurs vérifiés, paiements sécurisés.",
+//    images: ["/raidin-android-app-preview.png"],
+//  },
+//};
 export default function HomePage() {
+  const [downloadStatus, setDownloadStatus] = useState({});
+  const apkFiles = [
+    {
+      id: "client.apk",
+      name: "RAIDIN Client",
+      version: "1.0.0",
+      size: "15 MB",
+      description: "Official RAIDIN mobile client application",
+      releaseDate: "2024-01-15",
+      isStable: true,
+    },
+    {
+      id: "server.apk",
+      name: "RAIDIN Server",
+      version: "1.0.0",
+      size: "20 MB",
+      description: "RAIDIN server management application",
+      releaseDate: "2024-01-15",
+      isStable: true,
+    },
+  ];
+  const handleDownload = async (apk, displayName) => {
+    try {
+      // Set loading state
+      setDownloadStatus((prev) => ({ ...prev, [apk.id]: "loading" }));
+
+      // Get download URL from secure API
+      const response = await fetch(`/api/get-download-url/${apk.id}`, {
+        method: "POST",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to get download URL");
+      }
+
+      const { downloadUrl } = await response.json();
+
+      // Create a temporary anchor element to trigger download
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = `${displayName}.apk`;
+      link.target = "_blank";
+      link.style.display = "none";
+
+      // Add to DOM, click, then remove
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Set success state
+      setDownloadStatus((prev) => ({ ...prev, [apk.id]: "success" }));
+
+      // Reset status after 3 seconds
+      setTimeout(() => {
+        setDownloadStatus((prev) => ({ ...prev, [apk.id]: null }));
+      }, 3000);
+    } catch (error) {
+      console.error("Download error:", error);
+      setDownloadStatus((prev) => ({ ...prev, [apk.id]: "error" }));
+
+      // Reset error status after 3 seconds
+      setTimeout(() => {
+        setDownloadStatus((prev) => ({ ...prev, [apk.id]: null }));
+      }, 3000);
+
+      alert(`Download failed: ${error.message}`);
+    }
+  };
   return (
     <div className="flex min-h-[100svh] flex-col   ">
       <SiteHeader />
@@ -48,18 +117,12 @@ export default function HomePage() {
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button
-                  asChild
                   size="lg"
                   className="bg-blue-500 hover:bg-blue-600"
+                  onClick={() => handleDownload({ id: "Raidin" }, "Raidin")}
                 >
-                  <Link
-                    href="https://play.google.com/store/apps/details?id=app.raidin"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Download className="mr-2 h-5 w-5" />
-                    Télécharger
-                  </Link>
+                  <Download className="mr-2 h-5 w-5" />
+                  Télécharger Raidin v1.0
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <a href="#comment-ca-marche">Voir comment ça marche</a>
@@ -128,8 +191,7 @@ export default function HomePage() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                Payez directement dans l’app par carte ou portefeuille mobile,
-                en toute sécurité.
+                Payez directement cash, en toute sécurité.
               </CardContent>
             </Card>
             <Card>
@@ -170,13 +232,13 @@ export default function HomePage() {
                   step: "2",
                   title: "Demandez une assistance",
                   desc: "Décrivez la panne/accident et confirmez votre position.",
-                  img: "/mobile-towing-invoice.png",
+                  img: "/roadside-assistance-geolocation.png",
                 },
                 {
                   step: "3",
                   title: "Un dépanneur arrive ",
                   desc: "Le professionnel le plus proche est dépêché sur place.",
-                  img: "/roadside-assistance-geolocation.png",
+                  img: "/mobile-towing-invoice.png",
                 },
                 {
                   step: "4",
@@ -224,18 +286,12 @@ export default function HomePage() {
             </div>
             <div className="flex flex-wrap items-center gap-3 md:justify-end">
               <Button
-                asChild
                 size="lg"
                 className="bg-white text-emerald-700 hover:bg-white/90"
+                onClick={() => handleDownload("client.apk", "client.apk")}
               >
-                <Link
-                  href="https://play.google.com/store/apps/details?id=app.raidin"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  Télécharger
-                </Link>
+                <Download className="mr-2 h-5 w-5" />
+                Télécharger
               </Button>
               <Button asChild size="lg" variant="secondary">
                 <Link href="/contact">Nous contacter</Link>
