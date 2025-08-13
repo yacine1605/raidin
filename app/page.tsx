@@ -288,7 +288,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 className="bg-white text-emerald-700 hover:bg-white/90"
-                onClick={() => handleDownload("client.apk", "client.apk")}
+                onClick={() => handleDownload({ id: "Raidin" }, "Raidin")}
               >
                 <Download className="mr-2 h-5 w-5" />
                 Télécharger
