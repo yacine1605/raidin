@@ -225,7 +225,7 @@ export default function HomePage() {
                 {
                   step: "1",
                   title: "Téléchargez l'application",
-                  desc: "Installez Raidin depuis le notre site et créez votre compte.",
+                  desc: "Installez Raidin depuis notre site et créez votre compte.",
                   img: "/android-app-download.png",
                 },
                 {
@@ -280,7 +280,7 @@ export default function HomePage() {
                 Prêt à partir ?
               </h3>
               <p className="text-white/90">
-                Téléchargez Raidin et commandez votre dépannage course en
+                Téléchargez Raidin et commandez votre dépannage en
                 quelques secondes.
               </p>
             </div>
