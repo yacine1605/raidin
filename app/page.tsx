@@ -237,7 +237,7 @@ export default function HomePage() {
                 {
                   step: "3",
                   title: "Un dépanneur arrive ",
-                  desc: "Le professionnel le plus proche est dépêché sur place.",
+                  desc: "Le professionnel le plus proche est envoyé sur place.",
                   img: "/mobile-towing-invoice.png",
                 },
                 {
