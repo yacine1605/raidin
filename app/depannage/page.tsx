@@ -136,7 +136,7 @@ export default function ContactPage() {
 
         {/* Features */}
         {/* Advantages */}
-        <section id="comment-ca-marche" className="container py-16 md:py-24">
+        <section  className="container py-16 md:py-24">
           <div className="mx-auto max-w-2xl text-center space-y-3">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Les avantages de nous rejoindre
@@ -219,7 +219,7 @@ export default function ContactPage() {
         </section>
 
         {/* How it works */}
-        <section className="bg-muted/30">
+        <section id="comment-ca-marche" className="bg-muted/30">
           <div className="container py-16 md:py-24">
             <div className="mx-auto max-w-2xl text-center space-y-3">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
