@@ -1,11 +1,7 @@
+"use client";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 
-export const metadata = {
-  title: "Politique de Confidentialité — Raidin",
-  description:
-    "Comment Raidin collecte, utilise et protège vos données personnelles.",
-};
 
 export default function ConfidentialitePage() {
   return (
