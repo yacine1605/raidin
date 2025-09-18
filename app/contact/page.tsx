@@ -1,13 +1,9 @@
+"use client";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import ContactForm from "@/components/contact-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export const metadata = {
-  title: "Contact — Raidin",
-  description:
-    "Contactez l’équipe Raidin pour toute question, assistance ou partenariat.",
-};
 
 export default function ContactPage() {
   return (
