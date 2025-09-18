@@ -61,9 +61,7 @@ export default function SiteHeader() {
       {open && (
         <div className="md:hidden border-t">
           <div className="container py-3 flex flex-col gap-3">
-            <Link href="/" className="py-1" onClick={() => setOpen(false)}>
-              Accueil
-            </Link>
+           
             <Link href="/cgu" className="py-1" onClick={() => setOpen(false)}>
               {t("terms")}
             </Link>
