@@ -6,8 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Car, Menu, X } from "lucide-react";
 import { useState } from "react";
 import Logo from "../public/raidin.png";
+import { useLanguage } from "@/hooks/use-language";
+
+import LanguageToggle from "./language-toggle";
+
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { t, dir } = useLanguage();
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur">
       <div className="container flex h-16 items-center justify-between">
@@ -21,25 +27,26 @@ export default function SiteHeader() {
             href="/cgu"
             className="hover:text-foreground/80 text-foreground/60"
           >
-            CGU
+            {t("terms")}
           </Link>
           <Link
             href="/confidentialite"
             className="hover:text-foreground/80 text-foreground/60"
           >
-            Confidentialité
+            {t("privacy")}
           </Link>
           <Link
             href="/contact"
             className="hover:text-foreground/80 text-foreground/60"
           >
-            Contact
+            {t("contact")}
           </Link>
         </nav>
         <div className="hidden md:block">
+          <LanguageToggle />
           <Button asChild className="bg-blue-400 hover:bg-blue-700">
             <Link href="/depannage" target="_blank" rel="noopener noreferrer">
-              Rejoint-nous comme un dépannage
+              {t("joinAsPro")}{" "}
             </Link>
           </Button>
         </div>
@@ -58,27 +65,27 @@ export default function SiteHeader() {
               Accueil
             </Link>
             <Link href="/cgu" className="py-1" onClick={() => setOpen(false)}>
-              CGU
+              {t("terms")}
             </Link>
             <Link
               href="/confidentialite"
               className="py-1"
               onClick={() => setOpen(false)}
             >
-              Confidentialité
+              {t("privacy")}
             </Link>
             <Link
               href="/contact"
               className="py-1"
               onClick={() => setOpen(false)}
             >
-              Contact
+              {t("contact")}
             </Link>
             <Button asChild className="bg-blue-400 hover:bg-blue-700">
-            <Link href="/depannage" target="_blank" rel="noopener noreferrer">
-              Rejoine-nous comme un dépannage
-            </Link>
-          </Button>
+              <Link href="/depannage" target="_blank" rel="noopener noreferrer">
+                {t("joinAsPro")}{" "}
+              </Link>
+            </Button>
           </div>
         </div>
       )}
