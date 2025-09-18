@@ -13,7 +13,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("fr")
+  const [language, setLanguage] = useState<Language>("ar")
 
   useEffect(() => {
     const saved = localStorage.getItem("raidin-language") as Language
