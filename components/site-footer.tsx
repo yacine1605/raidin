@@ -2,8 +2,10 @@ import Link from "next/link";
 import { Car } from "lucide-react";
 import Logo from "../public/raidin.png";
 import Image from "next/image";
-
+import { useLanguage } from "@/hooks/use-language";
 export default function SiteFooter() {
+  const { t, dir } = useLanguage();
+
   return (
     <footer className="border-t ">
       <div className="container grid gap-6 py-8 md:grid-cols-2 ml-10">
@@ -12,26 +14,25 @@ export default function SiteFooter() {
             <Image src={Logo} alt="Raidin" width="90" />
           </div>
           <p className="text-sm text-muted-foreground">
-            Raidin est une application de mise en relation entre passagers et
-            dépannage chauffeurs professionnels. Disponible sur Android.
+            {t("footerDescription")}
           </p>
         </div>
         <div className="grid gap-1 text-sm md:justify-self-end">
           <Link href="/cgu" className="hover:underline">
-            Conditions Générales d&apos;Utilisation
+            {t("terms")}
           </Link>
           <Link href="/confidentialite" className="hover:underline">
-            Politique de Confidentialité
+            {t("privacy")}
           </Link>
           <Link href="/contact" className="hover:underline">
-            Contact
+            {t("contact")}
           </Link>
         </div>
       </div>
       <div className="border-t">
         <div className="container py-4 text-xs text-muted-foreground flex items-center justify-between flex-wrap gap-2">
           <span>
-            © {new Date().getFullYear()} Digitservz. Tous droits réservés.
+            © {new Date().getFullYear()} Digitservz. {t("allRightsReserved")}.
           </span>
         </div>
       </div>
