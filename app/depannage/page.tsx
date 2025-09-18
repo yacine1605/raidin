@@ -17,6 +17,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import { useLanguage } from "@/hooks/use-language";
 
 //export const metadata = {
 //  title: "Contact — Raidin",
@@ -26,6 +27,8 @@ import Image from "next/image";
 import logo from "../../public/rpro.png";
 import { useState } from "react";
 export default function ContactPage() {
+  const { t, dir } = useLanguage();
+
   const [downloadStatus, setDownloadStatus] = useState({});
 
   const handleDownload = async (apk, displayName) => {
@@ -85,20 +88,18 @@ export default function ContactPage() {
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs text-emerald-700 border-emerald-200 bg-emerald-50">
                 <Smartphone className="h-3.5 w-3.5" />
-                Disponible sur Android
+                {t("roadsideAssistance")}{" "}
               </div>
 
               <div className="flex flex-row">
                 <Image src={logo} alt="" width={90} />
 
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-                  Boostez votre activité de dépannage
+                  {t("proHeroTitle")}
                 </h1>
               </div>
               <p className="text-muted-foreground text-lg">
-                Recevez des demandes d’assistance en temps réel, planifiez vos
-                interventions et encaissez en toute simplicité. Gratuit à
-                l’inscription, commissions transparentes.
+                {t("proHeroDesc")}
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button
@@ -109,14 +110,15 @@ export default function ContactPage() {
                   }
                 >
                   <Download className="mr-2 h-5 w-5" />
-                  Télécharger RaidinPro V1.0.0
+                  {t("download")}
+                  RaidinPro V1.0.0
                 </Button>
                 <Button asChild size="lg" variant="outline">
-                  <a href="#comment-ca-marche">Voir comment ça marche</a>
+                  <a href="#comment-ca-marche">{t("seeHowItWorks")}</a>
                 </Button>
               </div>
               <p className="text-xs text-muted-foreground">
-                iOS bientôt disponible.
+                {t("coverage247")}
               </p>
             </div>
             <div className="relative">
@@ -136,83 +138,78 @@ export default function ContactPage() {
 
         {/* Features */}
         {/* Advantages */}
-        <section  className="container py-16 md:py-24">
+        <section className="container py-16 md:py-24">
           <div className="mx-auto max-w-2xl text-center space-y-3">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Les avantages de nous rejoindre
+              {t("advantagesTitle")}
             </h2>
-            <p className="text-muted-foreground">
-              Concentrez‑vous sur l’intervention. On s’occupe du reste.
-            </p>
+            <p className="text-muted-foreground">{t("advantagesSubtitle")}</p>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <MapPinned className="h-5 w-5 text-blue-500" />
-                  Demandes qualifiées près de vous
+                  {t("qualifiedRequestsTitle")}
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                Recevez des missions à proximité selon votre zone et vos
-                disponibilités.
+                {t("qualifiedRequestsDesc")}
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Clock className="h-5 w-5 text-blue-500" />
-                  Flux en temps réel 24/7
+                  {t("realTimeFlowTitle")}
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                Soyez alerté instantanément et acceptez en un geste depuis
-                l’app.
+                {t("realTimeFlowDesc")}
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <CreditCard className="h-5 w-5 text-blue-500" />
-                  Paiements simplifiés
+                  {t("simplifiedPaymentsTitle")}
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                Devis, paiement sécurisé .
+                {t("simplifiedPaymentsDesc")}{" "}
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Wrench className="h-5 w-5 text-blue-500" />
-                  Outils pro intégrés
+                  {t("integratedProToolsTitle")}{" "}
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                Historique, photos d’intervention, signature client et notes.
+                {t("integratedProToolsDesc")}{" "}
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <ShieldCheck className="h-5 w-5 text-blue-500" />
-                  Commission transparente
+                  {t("transparentCommissionTitle")}{" "}
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                Aucune surprise: modèle clair, sans frais cachés. Résiliation
-                libre.
+                {t("transparentCommissionDesc")}{" "}
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Headphones className="h-5 w-5 text-blue-500" />
-                  Support dédié
+                  {t("dedicatedSupportTitle")}{" "}
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                Assistance prioritaire par chat/email pour les partenaires.
+                {t("dedicatedSupportDesc")}{" "}
               </CardContent>
             </Card>
           </div>
@@ -223,33 +220,30 @@ export default function ContactPage() {
           <div className="container py-16 md:py-24">
             <div className="mx-auto max-w-2xl text-center space-y-3">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                Comment ça marche pour les pros
+                {t("howItWorks")}
               </h2>
-              <p className="text-muted-foreground">
-                De l’inscription à la facturation, en quatre étapes.
-              </p>
             </div>
             <div className="mt-10 grid gap-6 md:grid-cols-4">
               {[
                 {
                   step: "1",
-                  title: "Inscription",
-                  desc: "Créez votre compte Raidin Pro et envoyez vos documents.",
+                  title: t("proStep1Title"),
+                  desc: t("proStep1Desc"),
                 },
                 {
                   step: "2",
-                  title: "Validation",
-                  desc: "Nous vérifions vos infos, assurance et habilitations.",
+                  title: t("proStep2Title"),
+                  desc: t("proStep2Desc"),
                 },
                 {
                   step: "3",
-                  title: "Réception de missions",
-                  desc: "Activez-vous et acceptez les demandes proches.",
+                  title: t("proStep3Title"),
+                  desc: t("proStep3Desc"),
                 },
                 {
                   step: "4",
-                  title: "Intervention & facture",
-                  desc: "Réalisez la mission, validez le paiement et facturez.",
+                  title: t("proStep4Title"),
+                  desc: t("proStep4Desc"),
                 },
               ].map((item) => (
                 <Card key={item.step}>
@@ -272,15 +266,15 @@ export default function ContactPage() {
         <section className="container py-16 md:py-24">
           <div className="mx-auto max-w-3xl">
             <h2 className="text-2xl font-semibold sm:text-3xl">
-              Pré‑requis pour rejoindre le réseau
+              {t("prerequisitesTitle")}
             </h2>
             <ul className="mt-6 grid gap-3 text-sm text-muted-foreground">
               {[
-                "Entreprise enregistrée et pièces d’identité valides",
-                "Assurance professionnelle et responsabilité civile à jour",
-                "Véhicule d’intervention et équipements conformes",
-                "Respect des règles de sécurité et bonnes pratiques",
-                "Zone de couverture et disponibilité définies",
+                t("prerequisite1"),
+                t("prerequisite2"),
+                t("prerequisite3"),
+                t("prerequisite4"),
+                t("prerequisite5"),
               ].map((t) => (
                 <li key={t} className="flex items-start gap-2">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 text-blue-500" />
@@ -295,26 +289,21 @@ export default function ContactPage() {
           <div className="grid items-center gap-6 rounded-2xl border bg-gradient-to-br from-blue-500 to-blue-800 px-6 py-10 text-white md:grid-cols-2">
             <div className="space-y-2">
               <h3 className="text-2xl font-semibold sm:text-3xl">
-                Prêt à partir ?
+                {t("becomePartner")}{" "}
               </h3>
-              <p className="text-white/90">
-                Téléchargez Raidin et commandez votre dépannage course en
-                quelques secondes.
-              </p>
+              <p className="text-white/90">{t("ctaDescription")} </p>
             </div>
             <div className="flex flex-wrap items-center gap-3 md:justify-end">
               <Button
                 size="lg"
                 className="bg-white text-emerald-700 hover:bg-white/90"
-                onClick={() =>
-                  handleDownload({ id: "Raidin-Pro" }, "Raidin-Pro")
-                }
+                onClick={() => handleDownload({ id: "Raidin" }, "Raidin")}
               >
                 <Download className="mr-2 h-5 w-5" />
-                Télécharger
+                {t("download")}
               </Button>
               <Button asChild size="lg" variant="secondary">
-                <Link href="/contact">Nous contacter</Link>
+                <Link href="/contact">{t("contact")}</Link>
               </Button>
             </div>
           </div>
