@@ -20,7 +20,7 @@ export default function SiteHeader() {
         <Link href="/" className="flex items-center gap-2 font-semibold">
           {/*<Car className="h-5 w-5 text-emerald-600" />
           <span>Raidin</span>*/}
-          <Image src={Logo} alt="Raidin" width="90" />
+          <Image src={Logo} alt="Raidin" width="90" /> <LanguageToggle />
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <Link
@@ -81,6 +81,7 @@ export default function SiteHeader() {
             >
               {t("contact")}
             </Link>
+            <LanguageToggle />
             <Button asChild className="bg-blue-400 hover:bg-blue-700">
               <Link href="/depannage" target="_blank" rel="noopener noreferrer">
                 {t("joinAsPro")}{" "}
