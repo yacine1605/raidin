@@ -86,7 +86,10 @@ export const translations = {
       "Raidin est une application d'assistance routière qui met en relation les automobilistes et des dépanneurs professionnels pour le dépannage sur place et le remorquage 24/7. Disponible sur Android",
     allRightsReserved: "Tous droits réservés.",
     madeWithLove: "Made with ❤️",
-
+    contactQuestion: "Une question, un problème, une idée ? Écrivez-nous.",
+    contactEmail: "Email",
+    contactPhone: "Téléphone",
+    contactSupportHours: "Support disponible du 7/7, 9h–23h (heure locale)",
     // Pro page
     proHeroTitle: "Raidin Pro — Boostez votre activité de dépannage",
     proHeroDesc:
@@ -163,7 +166,11 @@ export const translations = {
     step3Desc: "يتم إرسال المحترف الأقرب إلى الموقع.",
     step4Title: "سحب أو إصلاح",
     step4Desc: "تدخل في الموقع أو سحب المركبة، والدفع نقداً.",
-
+    contactQuestion: "عندك سؤال، مشكلة أو اقتراح؟ راسلنا.",
+    contactEmail: "البريد الإلكتروني",
+    contactPhone: "الهاتف",
+    contactSupportHours:
+      "الدعم متوفر 7/7 من 9 صباحاً إلى 11 مساءً (بالتوقيت المحلي)",
     // CTA
     needHelpNow: "تحتاج مساعدة الآن؟",
     ctaDescription: "حمل رائدين واطلب مساعدة على الطريق في ثوانٍ معدودة.",
