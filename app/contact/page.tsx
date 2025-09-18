@@ -3,9 +3,10 @@ import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import ContactForm from "@/components/contact-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
+import { useLanguage } from "@/hooks/use-language";
 
 export default function ContactPage() {
+  const { t, dir } = useLanguage();
   return (
     <div className="flex min-h-[100svh] flex-col">
       <SiteHeader />
@@ -13,19 +14,18 @@ export default function ContactPage() {
         <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>Nous contacter</CardTitle>
+              <CardTitle>{t("contactUs")}</CardTitle>
             </CardHeader>
             <CardContent className="text-sm text-muted-foreground space-y-2">
-              <p>Une question, un problème, une idée ? Écrivez-nous.</p>
+              <p>{t("contactQuestion")}</p>
               <p>
-                Email:{" "}
+                {t("contactEmail")}
                 <a className="underline" href="mailto:support@raidin.app">
                   raidin@digitservz.dz
                 </a>
               </p>
-              <p>Téléphone :{" "} 0784065560
-              </p>
-              <p>Support disponible du 7/7, 9h–23h (heure locale).</p>
+              <p> {t("contactPhone")} : 0784065560</p>
+              <p>{t("contactSupportHours")} </p>
             </CardContent>
           </Card>
           {/*<Card>
